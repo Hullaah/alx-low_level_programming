@@ -11,8 +11,7 @@ int character = 97;
 while (character < 123)
 {
 
-if (character == 'q' || character == 'e');
-else
+if (character != 'q' && character != 'e')
 {
 putchar(character);
 }
@@ -20,6 +19,6 @@ putchar(character);
 character++;
 }
 putchar(10);
-    
+
 return (0);
 }
