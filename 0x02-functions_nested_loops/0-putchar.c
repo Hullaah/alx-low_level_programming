@@ -1,3 +1,4 @@
+#include "main.h"
 /**
  * main - prints the string '_putchar'
  * Return: 0 (Always)
@@ -5,7 +6,8 @@
 int main(void)
 {
 char put[] = "_putchar";
-for (int i = 0; i < 9; i++)
+int i = 0;
+for (i = 0; i < 9; i++)
 {
 _putchar(put[i]);
 }
