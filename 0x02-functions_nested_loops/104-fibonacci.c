@@ -5,11 +5,13 @@
 */
 int main(void)
 {
+	unsigned long n = 0;
+	int i = 0;
+
 	printf("%d, ", 1);
 	printf("%d, ", 2);
-	unsigned long n = 0;
 
-	for (int i = 0; i < 96; i++)
+	for (i = 0; i < 96; i++)
 	{
 		unsigned long num_b4_n, num_2stps_b4_n;
 

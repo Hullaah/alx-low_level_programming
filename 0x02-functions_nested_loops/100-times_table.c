@@ -22,16 +22,19 @@ void print_times_table(int n)
 
 			if (j != 0)
 				_putchar(',');
+				_putchar(' ');
 			if (ans < 10 && j != 0)
 				_putchar(' ');
+				_putchar(' ');
 			if (j != 0)
+				_putchar(' ');
 				_putchar(' ');
 			if ((ans / 10) != 0)
 			{
 				if ((ans / 100) != 0)
 				{
 					_putchar((ans / 100) + 48);
-					_putchar((ans / 10) + 48);
+					_putchar(((ans / 10) % 10) + 48);
 					_putchar((ans % 10) + 48);
 				}
 				else
