@@ -6,16 +6,18 @@
 */
 int _islower(int c)
 {
-    int i = 0;
-for (i = 97; i < 123; i++)
-{
+	int i = 0;
 
-if (i == c)
-{
-return (1);
-}
+	for (i = 97; i < 123; i++)
+	{
 
-}
+		if (i == c)
+		{
+		return (1);
+		}
 
-return (0);
+	}
+
+	return (0);
 }
+p0
