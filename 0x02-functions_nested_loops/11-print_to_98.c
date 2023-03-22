@@ -29,6 +29,10 @@ printf("%d, ", i);
 }
 }
 
-printf("%d", 98);
+printf("%d\n", 98);
 
+}
+int main(void)
+{
+    print_to_98(100);
 }
