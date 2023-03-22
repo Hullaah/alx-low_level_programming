@@ -6,7 +6,7 @@
 */
 int main(void)
 {
-	int sum = 0;
+	unsigned int sum = 0;
 	int i = 0;
 
 	for (i = 0; i < 4000000; i++)
