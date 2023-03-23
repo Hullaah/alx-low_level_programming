@@ -17,3 +17,8 @@ void more_numbers(void)
 	}
 	_putchar(10);
 }
+int main(void)
+{
+	more_numbers(10);
+	return 0;
+}
