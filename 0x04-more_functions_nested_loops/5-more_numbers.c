@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 /**
  * more_numbers - prints all numbers from 0 to 14
  * Return: void (does not have a return value)
@@ -17,9 +16,4 @@ void more_numbers(void)
 		putchar((i % 10) + 48);
 	}
 	putchar(10);
-}
-int main(void)
-{
-	more_numbers();
-	return 0;
 }
