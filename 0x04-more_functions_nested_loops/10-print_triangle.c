@@ -34,5 +34,5 @@ void print_triangle(int size)
 }
 int main()
 {
-	print_triangle(-2);
+	print_triangle(1);
 }
