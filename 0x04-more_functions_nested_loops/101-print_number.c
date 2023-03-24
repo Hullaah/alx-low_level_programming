@@ -1,5 +1,4 @@
 #include "main.h"
-#include <math.h>
 /**
  * print_number - prints numbers using the _putchar function
  * @n: number
@@ -7,12 +6,29 @@
 */
 void print_number(int n)
 {
-	int num_length, i = 0;
+	int ncopy, count, power, i = 0;
 
-	num_length = (int) (log10(n) + 1);
-
-	for (i = num_length - 1; i > -1; i--)
+	ncopy = n;
+	count = 0;
+	power = 1;
+	if (n < 0)
+		_putchar('-');
+	while (ncopy)
 	{
-		_putchar(((int)(n / pow(10, i)) % 10) + 48);
+		ncopy /= 10;
+		count++;
 	}
+	for (i = count - 1; i > 0; i--)
+	{
+		power *= 10;
+	}
+	while (power)
+	{
+		if (n > 0)
+			_putchar(((n / power) % 10) + 48);
+		else
+			_putchar((((n / power) % 10) * -1) + 48);
+		power /= 10;
+	}
+	_putchar(10);
 }
