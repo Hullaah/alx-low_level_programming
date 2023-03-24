@@ -1,12 +1,12 @@
 #include <stdio.h>
 
 /**
- * main - prints the sum of even numbers unt he fibonacci sequence
+ * main - prints the sum of even numbers in the fibonacci sequence
  * Return: Always (0)
 */
 int main(void)
 {
-	unsigned int sum = 0;
+	int sum = 0;
 	int i = 0;
 
 	for (i = 0; i < 4000000; i++)
