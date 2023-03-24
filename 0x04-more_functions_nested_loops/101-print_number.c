@@ -30,5 +30,4 @@ void print_number(int n)
 			_putchar((((n / power) % 10) * -1) + 48);
 		power /= 10;
 	}
-	_putchar(10);
 }
