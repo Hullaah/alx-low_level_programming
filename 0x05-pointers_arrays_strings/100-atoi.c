@@ -8,18 +8,27 @@ int _atoi(char *s)
 {
 	int i = 0;
 	int j = 0;
-	int place_value = 1;
+	double place_value = 1;
 	int result = 0;
 
 	for (; s[i] != '\0'; i++)
 	{
+		if (s[i] == '+')
+		{
+			place_value *= 1;
+		}
+		if (s[i] == '-')
+		{
+			place_value *= -1;
+		}
 		if (s[i] > 47 && s[i] < 58)
 		{
-			if (s[i - 1] == '-' && place_value == 1)
-			{
-				place_value *= -1;
-			}
 			place_value *= 10;
+			if (s[i + 1] < 48 || s[i -1] > 57)
+			{
+				break;
+			}
+			
 		}
 	}
 	place_value /= 10;
