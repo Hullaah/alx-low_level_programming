@@ -24,11 +24,10 @@ int _atoi(char *s)
 		if (s[i] > 47 && s[i] < 58)
 		{
 			place_value *= 10;
-			if (s[i + 1] < 48 || s[i -1] > 57)
+			if (s[i + 1] < '0' || s[i - 1] > '9')
 			{
 				break;
 			}
-			
 		}
 	}
 	place_value /= 10;
@@ -39,7 +38,6 @@ int _atoi(char *s)
 			result += (int)(s[j] - 48) * place_value;
 			place_value /= 10;
 		}
-
 	}
 	return (result);
 }
