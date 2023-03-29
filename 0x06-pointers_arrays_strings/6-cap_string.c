@@ -1,33 +1,38 @@
 #include "main.h"
+/**
+ * cap_string - check the code
+ * @string: string to be capitalised
+ * Return: capitalised string
+*/
 char *cap_string(char *string)
 {
-        int i;
+	int i;
 
-        for (i = 0; i != '\0'; i++)
-        {
-                if (string[i] > 96 && string[i] < 123)
-                {
-                        if (!(string[i + 1] == '\0') && !(string[i] == '\n'))
-                        {
-                                switch (string[i])
-                                {
-                                case ',':
-                                case ';':
-                                case '.':
-                                case '!':
-                                case '?':
-                                case '"':
-                                case '(':
-                                case ')':
-                                case '{':
-                                case '}':
-                                        string[i + 1] -= 32;
-                                        break;
-                                default:
-                                        break;
-                                }
-                        }
-                }
-        }
-        return (string);
+	for (i = 0; string[i] != '\0'; i++)
+	{
+		switch (string[i])
+		{
+		case ',':
+		case ';':
+		case '.':
+		case '!':
+		case '?':
+		case '"':
+		case '(':
+		case ')':
+		case '{':
+		case '}':
+		case ' ':
+		case '\t':
+		case '\n':
+			if (string[i + 1] > 96 && string[i + 1] < 123)
+			{
+				string[i + 1] -= 32;
+				break;
+			}
+		default:
+			break;
+		}
+	}
+	return (string);
 }
