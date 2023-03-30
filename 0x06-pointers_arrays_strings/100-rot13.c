@@ -6,7 +6,7 @@
 */
 char *rot13(char *string)
 {
-	int i,j;
+	int i, j;
 	char alphabet[] = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ";
 	char cipher[] =   "nNoOpPqQrRsStTuUvVwWxXyYzZaAbBcCdDeEfFgGhHiIjJkKlLmM";
 
