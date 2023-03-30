@@ -6,33 +6,18 @@
 */
 char *leet(char *string)
 {
-	int i;
+	int i,j;
+	char s[] = {'a', 'A', 'e', 'E', 'o', 'O', 't', 'T', 'l', 'L'};
+	char val[] = {'4', '4', '3', '3', '0', '0', '7', '7', '1', '1'};
 
 	for (i = 0; string[i] != '\0'; i++)
 	{
-		switch (string[i])
+		for (j = 0; j < 10; j++)
 		{
-		case 'a':
-		case 'A':
-			string[i] = '4';
-			break;
-		case 'e':
-		case 'E':
-			string[i]  = '3';
-			break;
-		case 'o':
-		case 'O':
-			string[i] = '0';
-			break;
-		case 't':
-		case 'T':
-			string[i] = '7';
-			break;
-		case 'l':
-		case 'L':
-			string[i] = '1';
-		default:
-			break;
+			if (string[i] == s[j])
+			{
+				string[i] = val[j];
+			}
 		}
 	}
 	return (string);
