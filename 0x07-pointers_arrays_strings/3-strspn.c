@@ -25,7 +25,7 @@ unsigned int string_length(char *string)
 */
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned int i, j;
+	unsigned int i, j = 0;
 	unsigned int found, length = 0;
 	unsigned int word_length = string_length(accept);
 
@@ -42,5 +42,5 @@ unsigned int _strspn(char *s, char *accept)
 		if (found == word_length)
 			break;
 	}
-	return (length);
+	return (length + 1);
 }
