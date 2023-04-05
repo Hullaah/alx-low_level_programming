@@ -8,6 +8,7 @@ void _print_rev_recursion(char *s)
 {
 	int i = 0;
 	char letter = s[i];
+
 	if (s[0] == '\0')
 	{
 		return;
