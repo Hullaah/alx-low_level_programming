@@ -28,7 +28,7 @@ int _is_base_prime(int n, int i)
 */
 int is_prime_number(int n)
 {
-	if (n == 1 || n == -1)
+	if (n < 2)
 	{
 		return (0);
 	}
