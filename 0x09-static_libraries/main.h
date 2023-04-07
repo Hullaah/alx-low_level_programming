@@ -35,3 +35,5 @@ char *_strstr(char *haystack, char *needle);
 int _abs(int a);
 
 char *_strcpy(char *dest, char *src);
+
+int _atoi(char *s);
