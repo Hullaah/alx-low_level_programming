@@ -56,19 +56,19 @@ int calculate_coins(int money)
 int main(int argc, char *argv[])
 {
 	int total_coins;
-        int money;
+	int money;
 
 	if (argc != 2)
 	{
 		printf("Error\n");
 		return (1);
 	}
-        money = atoi(argv[1]);
-        if (money < 0)
-        {
-                printf("0\n");
-                return (0);
-        }
+	money = atoi(argv[1]);
+	if (money < 0)
+	{
+		printf("0\n");
+		return (0);
+	}
 	total_coins = calculate_coins(money);
 	printf("%d\n", total_coins);
 	return (0);
