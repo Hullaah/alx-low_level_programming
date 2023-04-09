@@ -1,3 +1,6 @@
+#ifndef MAIN_H
+#define MAIN_H
+
 void _putchar(int c);
 
 int _isupper(int c);
@@ -37,3 +40,5 @@ int _abs(int a);
 char *_strcpy(char *dest, char *src);
 
 int _atoi(char *s);
+
+#endif
