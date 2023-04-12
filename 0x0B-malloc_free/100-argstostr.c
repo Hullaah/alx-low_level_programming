@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 /**
@@ -17,35 +18,71 @@ int _strlen(char *s)
 	return (i);
 }
 
-
-char *argstostr(int ac, char **av)
+/**
+ * calculate_total_length - calculates the sum of sll the string
+ * length in an arry.
+ * @av: array of strings
+ * @ac: amount of elements in array
+ * Return: sum of string length
+*/
+int calculate_total_length(int ac, char **av)
 {
-	int i, j, k, total_length = 0;
-	char *string;
+	int i = 0;
+	int total_length = 0;
 
-	if (ac == 0 || av == NULL)
-	{
-		return (NULL);
-	}
 	while (i < ac)
 	{
 		total_length += _strlen(av[i]);
 		i++;
 	}
-	string = malloc(total_length + ac + 1);
+	return (total_length);
+}
+
+
+/**
+ * argstostr - concatenates an array of strings together
+ * @ac: amount of elements in the array
+ * @av: array of strings
+ * Return: concatenated string
+*/
+char *argstostr(int ac, char **av)
+{
+	int j, k, total_length, status = 0;
+	char *string;
+
+	total_length = calculate_total_length(ac, av);
+	if (ac == 0 || av == NULL)
+	{
+		return (NULL);
+	}
+	string = malloc(total_length + ac);
+	if (string == NULL)
+		return (NULL);
 	for (; j < total_length + ac; j++)
 	{
-		if (av[k][j] != '\0')
-			string[j] = av[k][j];
-		else
+		if (k > 0)
 		{
-			k++;
-			string[j] = '\n';
+			if (av[k][j - status] == '\0')
+			{
+				string[j] = '\n';
+				k++;
+				status += _strlen(av[k - 1]) + 1;
+				continue;
+			}
+			string[j] = av[k][j - status];
 		}
-		
+		else if (k == 0)
+		{
+			if (av[k][j] == '\0')
+			{
+				string[j] = '\n';
+				k++;
+				status += _strlen(av[k - 1]) + 1;
+				continue;
+			}
+			string[j] = av[k][j];
+		}
 	}
 	string[j] = '\0';
 	return (string);
 }
-
-
