@@ -47,10 +47,12 @@ int calculate_total_length(int ac, char **av)
 */
 char *argstostr(int ac, char **av)
 {
-	int j, k, total_length, status = 0;
+	int j = 0;
+	int k = 0;
+	int status = 0;
 	char *string;
+	int total_length = calculate_total_length(ac, av);
 
-	total_length = calculate_total_length(ac, av);
 	if (ac == 0 || av == NULL)
 	{
 		return (NULL);
