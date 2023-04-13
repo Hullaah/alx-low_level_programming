@@ -32,10 +32,6 @@ int is_prime_number(int n)
 	{
 		return (0);
 	}
-	if (n < 0)
-	{
-		return (_is_base_prime(n * -1, 1));
-	}
 	return (_is_base_prime(n, 1));
 }
 
