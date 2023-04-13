@@ -99,19 +99,26 @@ char *get_word(char *str, int word)
 */
 char **strtow(char *str)
 {
+	
 	int total_word = word_count(str);
 	int i, j, k, string_length;
 	char **string_arr;
 	char *tmp;
-
+	if (str == NULL || total_word == 0)
+	{
+		return (NULL);
+	}
 	string_arr = malloc((total_word + 1) * sizeof(char *));
 	if (string_arr == NULL)
 		return (NULL);
 	for (i = 0; i < total_word; i++)
 	{
-		string_arr[i] = malloc(word_length(str, i + 1) + 1);
+		string_arr[i] = malloc(word_length(str, i + 1));
 		if (string_arr[i] == NULL)
+		{
+			free(string_arr);
 			return (NULL);
+		}
 	}
 	for (k = 0; k < total_word; k++)
 	{
@@ -126,5 +133,6 @@ char **strtow(char *str)
 		}
 		string_arr[k][j] = '\0';
 	}
+	string_arr[i] = NULL;
 	return (string_arr);
 }
