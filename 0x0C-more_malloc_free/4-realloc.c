@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
+
 /**
  * _memset - fills the first n bytes of the memory area pointed to by s with
  * the constant byte b
@@ -22,22 +23,23 @@ char *_memset(void *s, unsigned int b, unsigned int n)
 	return (s);
 }
 
-/**
- * _calloc - works just like the standard library calloc
- * @nmemb: number of items to allocate memory for
- * @size: size of each element
- * Return: pointer to allocated memory
-*/
 
-void *_calloc(unsigned int nmemb, unsigned int size)
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	void *ptr = NULL;
+	void *tmp;
+	int i;
 
-	if (nmemb == 0 || size == 0)
-		return (NULL);
-	ptr = malloc(nmemb * size);
+	if (new_size == old_size)
+		return ptr;
 	if (ptr == NULL)
+	{
+		/*free(ptr);*/
+		ptr = malloc(new_size);
+		return (ptr);
+	}
+	if (new_size == 0 && ptr != NULL)
+	{
+		free(ptr);
 		return (NULL);
-	_memset(ptr, 0, nmemb * size);
-	return (ptr);
+	}
 }
