@@ -23,4 +23,6 @@ void print_dog(struct dog *d)
 		else
 			printf("Age: (nil)\n");
 	}
+	else
+		exit(1);
 }
