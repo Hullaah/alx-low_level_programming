@@ -16,5 +16,5 @@ void free_dog(dog_t *d)
 		free(d);
 	}
 	else
-		exit(1);
+		exit(0);
 }
