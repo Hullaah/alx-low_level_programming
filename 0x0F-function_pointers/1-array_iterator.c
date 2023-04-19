@@ -1,7 +1,7 @@
 #include "function_pointers.h"
 #include <stdint.h>
 /**
- * array_iteraror - iterates an array and carry out action on array
+ * array_iterator - iterates an array and carry out action on array
  * @array: array
  * @size: array size
  * @action: pointer to function for action to be carried out on element
@@ -10,10 +10,13 @@
 
 void array_iterator(int *array, size_t size, void (*action)(int))
 {
-	size_t i;
-
-	for (i = 0; i < size; i++)
+	if (array && size && action)
 	{
-		action(array[i]);
+		size_t i;
+
+		for (i = 0; i < size; i++)
+		{
+			action(array[i]);
+		}
 	}
 }
