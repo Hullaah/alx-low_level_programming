@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
 	if (argc != 4)
 	{
 		printf("Error\n");
-		printf("%d\n", argc);
 		exit(98);
 	}
 	if (argv[2][0] != '+' && argv[2][0] != '-' &&
