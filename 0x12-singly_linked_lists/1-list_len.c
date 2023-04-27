@@ -2,14 +2,13 @@
 
 size_t list_len(const list_t *h)
 {
+	const list_t *node = h;
 	size_t i = 0;
 
-	if (h)
+	while (node)
 	{
-		if (h->str)
-			i++;
-		if (h->next)
-			i++;
+		i++;
+		node = node->next;
 	}
 	return (i);
 }
