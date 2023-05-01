@@ -7,7 +7,7 @@
 */
 void print(void)
 {
-	char *quote = "You're beat! and yet, you must allow,\n";
+	char *quote = "You're beat! and yet, you must allow,";
 
-	printf("%sI bore my house upon my back!\nbefore the main", quote);
+	printf("%s\nI bore my house upon my back!\nbefore the main\n", quote);
 }
