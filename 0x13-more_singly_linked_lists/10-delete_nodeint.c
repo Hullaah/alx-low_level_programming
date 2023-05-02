@@ -26,8 +26,8 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 		preptr = ptr;
 		ptr = ptr->next;
 	}
-        if (i != index)
-                return (ptr);
+	if (i != index)
+		return (-1);
 	node = ptr->next;
 	free(ptr);
 	preptr->next = node;
