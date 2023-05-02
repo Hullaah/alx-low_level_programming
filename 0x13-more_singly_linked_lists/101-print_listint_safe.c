@@ -6,7 +6,7 @@ size_t print_listint_safe(const listint_t *head)
 	size_t i = 0;
 	int status = 0;
 	node = head;
-        do
+	do
 	{
 		i++;
 		status++;

@@ -17,15 +17,19 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	node->n = n;
 	node->next = NULL;
 
-        if (ptr == NULL && idx == 0)
+	if (!ptr && !idx)
 	{
-                *head = node;
+		*head = node;
 		return (*head);
 	}
-        else if (!ptr && idx != 0)
-        {
+	if (ptr && !idx)
+	{
+		node->next = *head;
+		*head = node;
+		return (*head);
+	}
+	if (!ptr && idx)
 		return (NULL);
-        }
 	while (i != idx && ptr)
 	{
 		i++;
