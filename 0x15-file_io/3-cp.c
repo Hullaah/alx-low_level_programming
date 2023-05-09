@@ -1,7 +1,12 @@
 #include "main.h"
 #include <stdio.h>
 #define BUFFER 1024
-
+/**
+ *main - copies content of file to another file
+ *@argc: agr count
+ *@argv: arg vector
+ *Return: depends
+*/
 int main(int argc, char *argv[])
 {
 	char *buf;
