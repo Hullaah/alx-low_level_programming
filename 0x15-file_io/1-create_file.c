@@ -6,7 +6,7 @@
 */
 int _strlen(char *c)
 {
-	if (c[0] != '\0')
+	if (c != NULL && c[0] != '\0')
 		return (1 + _strlen(c + 1));
 	else
 		return (0);

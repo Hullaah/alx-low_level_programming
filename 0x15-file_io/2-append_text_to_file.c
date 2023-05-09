@@ -6,7 +6,7 @@
 */
 int _strlen(char *c)
 {
-	return ((c[0] != '\0') ? (1 + _strlen(c + 1)) : 0);
+	return ((c != NULL && c[0] != '\0') ? (1 + _strlen(c + 1)) : 0);
 }
 /**
  * append_text_to_file - appends  text to file
