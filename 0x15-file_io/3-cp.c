@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 	char *buf;
 	ssize_t fd1, fd2, red, written;
 	int clos;
+
 	if (argc != 3)
 	{
 		dprintf(2, "Usage: cp file_from file_to\n");
@@ -32,11 +33,6 @@ int main(int argc, char *argv[])
 	if (!buf)
 	{
 		clos = close(fd1);
-		if (clos == -1)
-		{
-			dprintf(2, "Error: Can't close fd %ld\n", fd1);
-			exit(100);
-		}
 		dprintf(2, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
@@ -45,11 +41,6 @@ int main(int argc, char *argv[])
 	{
 		clos = close(fd1);
 		free(buf);
-		if (clos == -1)
-		{
-			dprintf(2, "Error: Can't close fd %ld\n", fd1);
-			exit(100);
-		}
 		dprintf(2, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
@@ -57,24 +48,14 @@ int main(int argc, char *argv[])
 	{
 		clos = close(fd1);
 		free(buf);
-		if (clos == -1)
-		{
-			dprintf(2, "Error: Can't close fd %ld\n", fd1);
-			exit(100);
-		}
 		dprintf(2, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
-	fd2 = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 664);
+	fd2 = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (fd2 == -1)
 	{
 		clos = close(fd1);
 		free(buf);
-		if (clos == -1)
-		{
-			dprintf(2, "Error: Can't close fd %ld\n", fd1);
-			exit(100);
-		}
 		dprintf(2, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
@@ -83,22 +64,23 @@ int main(int argc, char *argv[])
 	{
 		free(buf);
 		clos = close(fd1);
-		if (clos == -1)
-		{
-			clos = close(fd2);
-			if (clos == -1)
-			{
-			
-				dprintf(2, "Error: Can't close fd %ld\n", fd2);
-				exit(100);
-			}
-			dprintf(2, "Error: Can't close fd %ld\n", fd1);
-			exit(100);
-		}
+		clos = close(fd2);
 		dprintf(2, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
-	close(fd1);
-	close(fd2);
+	free(buf);
+	clos = close(fd1);
+	if (clos == -1)
+	{
+		clos = close(fd2);
+		if (clos == -1)
+		{
+			dprintf(2, "Error: Can't close fd %ld", fd2);
+			exit(100);
+		}
+		dprintf(2, "Error: Can't close fd %ld", fd1);
+		exit(100);
+	}
+	clos = close(fd2);
 	return (0);
 }
