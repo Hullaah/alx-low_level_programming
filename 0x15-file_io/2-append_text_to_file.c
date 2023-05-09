@@ -23,11 +23,20 @@ int append_text_to_file(const char *filename, char *text_content)
 		return (-1);
 	fd = open(filename, O_WRONLY | O_APPEND);
 	if (!text_content && fd != -1)
+	{
+		close(fd);
 		return (1);
+	}
 	if (!text_content && fd == -1)
+	{
+		close(fd);
 		return (-1);
-	if (fd == -1)
+	}
+	if (text_content && fd == -1)
+	{
+		close(fd);
 		return (-1);
+	}
 	written = write(fd, text_content, string_length);
 	if (written == -1)
 	{
