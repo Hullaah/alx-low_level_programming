@@ -31,14 +31,6 @@ int main(int argc, char *argv[])
 		dprintf(2, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	red = read(fd1, buf, BUFFER);
-	if (red == -1)
-	{
-		clos = close(fd1);
-		free(buf);
-		dprintf(2, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
 	fd2 = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (fd2 == -1)
 	{
@@ -47,14 +39,25 @@ int main(int argc, char *argv[])
 		dprintf(2, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
-	written = write(fd2, buf, BUFFER);
-	if (written == -1)
+	while ((red = read(fd1, buf, BUFFER)))
 	{
-		free(buf);
-		clos = close(fd1);
-		clos = close(fd2);
-		dprintf(2, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
+		if (red == -1)
+		{
+			clos = close(fd1);
+			free(buf);
+			dprintf(2, "Error: Can't read from file %s\n", argv[1]);
+			exit(98);
+		}
+		written = write(fd2, buf, BUFFER);
+		if (written == -1)
+		{
+			free(buf);
+			clos = close(fd1);
+			clos = close(fd2);
+			dprintf(2, "Error: Can't write to %s\n", argv[2]);
+			exit(99);
+		}
+
 	}
 	free(buf);
 	clos = close(fd1);
@@ -70,5 +73,10 @@ int main(int argc, char *argv[])
 		exit(100);
 	}
 	clos = close(fd2);
+	if (clos == -1)
+	{
+		dprintf(2, "Error: Can't close fd %ld", fd2);
+		exit(100);
+	}
 	return (0);
 }
