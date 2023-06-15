@@ -61,7 +61,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	else if (idx == list_len - 1)
 	{
 		add_dnodeint_end(h, n);
-		node = get_dnodeint_at_index(*h, list_len - 1);
+		node = get_dnodeint_at_index(*h, list_len);
 		return (node);
 	}
 	else
