@@ -46,13 +46,14 @@ dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	size_t list_len = dlistint_length(*h), i = 0;
+	size_t list_len, i = 0;
 	dlistint_t *node, *ptr = *h;
 
-	if (idx >= list_len)
-	{
+	if (!h)
 		return (NULL);
-	}
+	list_len = dlistint_length(*h);
+	if (idx >= list_len)
+		return (NULL);
 	else if (idx == 0)
 	{
 		add_dnodeint(h, n);
