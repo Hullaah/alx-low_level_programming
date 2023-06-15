@@ -35,7 +35,7 @@ int word_length(char *str, int word)
 		words++;
 		if (word == words)
 		{
-			while (str[j] != ' ')
+			while (str[j] != ' ' && str[j] != '\0')
 				j++;
 			return (j);
 		}
@@ -47,7 +47,7 @@ int word_length(char *str, int word)
 			words++;
 			if (word == words)
 			{
-				while (str[i] != ' ')
+				while (str[i] != ' ' && str[i] != '\0')
 				{
 					i++;
 					j++;
@@ -99,11 +99,11 @@ char *get_word(char *str, int word)
 */
 char **strtow(char *str)
 {
-	
 	int total_word = word_count(str);
 	int i, j, k, string_length;
 	char **string_arr;
 	char *tmp;
+
 	if (str == NULL || total_word == 0)
 	{
 		return (NULL);
@@ -113,7 +113,7 @@ char **strtow(char *str)
 		return (NULL);
 	for (i = 0; i < total_word; i++)
 	{
-		string_arr[i] = malloc(word_length(str, i + 1));
+		string_arr[i] = malloc(word_length(str, i + 1) + 1);
 		if (string_arr[i] == NULL)
 		{
 			free(string_arr);

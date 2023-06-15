@@ -10,13 +10,15 @@
 */
 void *_memcpy(void *dest, const void *src, size_t n)
 {
+	int i;
 	char *dst_ptr = dest;
 	const char *src_ptr = src;
 
-	while (n--)
+	for (i = 0; i < n; i++)
 	{
-		*dst_ptr++ = *src_ptr++;
+		dst_ptr[i] = src_ptr[i];
 	}
+	
 	return (dest);
 }
 /**
@@ -37,6 +39,8 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	{
 		/*free(ptr);*/
 		ptr = malloc(new_size);
+		if (ptr == NULL)
+			return (NULL);
 		return (ptr);
 	}
 	if (new_size == 0 && ptr != NULL)
@@ -45,7 +49,13 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		return (NULL);
 	}
 	tmp = malloc(new_size);
-	_memcpy(tmp, ptr, old_size < new_size ? old_size : new_size);
+	if (tmp == NULL)
+		return (NULL);
+	if (old_size < new_size)
+		_memcpy(tmp, ptr, old_size);
+	else
+		_memcpy(tmp, ptr, new_size);
 	free(ptr);
+	ptr = tmp;
 	return (tmp);
 }
