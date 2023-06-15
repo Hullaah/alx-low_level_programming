@@ -17,6 +17,26 @@ size_t dlistint_length(dlistint_t *h)
 	return (i);
 }
 /**
+ * get_dnodeint_at_index - gets the node specified by index from head
+ * @head: head of linked list
+ * @index: indexof node to be got
+ * Return: gotten node or NULL if unsuccessful
+*/
+dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
+{
+	size_t list_len = dlistint_length(head), i = 0;
+	dlistint_t *ptr = head;
+
+	if (index >= list_len)
+		return (NULL);
+	while (i != index)
+	{
+		ptr = ptr->next;
+		i++;
+	}
+	return (ptr);
+}
+/**
  * insert_dnodeint_at_index - insert a node in a linked list at index
  * specified by idx
  * @h: linked list head
@@ -41,7 +61,8 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	else if (idx == list_len - 1)
 	{
 		add_dnodeint_end(h, n);
-		return (*h);
+		node = get_dnodeint_at_index(*h, list_len - 1);
+		return (node);
 	}
 	else
 	{
@@ -59,5 +80,5 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		ptr->prev = node;
 		node->n = n;
 	}
-	return (*h);
+	return (node);
 }
