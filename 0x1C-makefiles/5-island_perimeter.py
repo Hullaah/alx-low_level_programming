@@ -1,5 +1,5 @@
 #!/usr/bin/python3
- """
+"""
 Calculates the perimeter of the island described in the grid.
 
 Args:
@@ -8,6 +8,7 @@ rid (List[List[int]]): A list of list of integers representing the island.
 int: The perimeter of the island.
 
 """
+
 
 def island_perimeter(grid):
     """
