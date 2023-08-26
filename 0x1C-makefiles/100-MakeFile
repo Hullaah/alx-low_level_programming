@@ -1,0 +1,44 @@
+# Compiler
+CC = gcc
+
+# Source files
+SRC = main.c foo.c bar.c
+
+# Object files
+OBJ = $(SRC:.c=.o)
+
+# Executable name
+NAME = school
+
+# Compiler flags
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+# Commands
+RM = rm -f
+
+# Main target
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -o $(NAME) $(CFLAGS)
+
+# Source file dependencies
+main.o: main.c m.h
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+foo.o: foo.c m.h
+	$(CC) -c foo.c -o foo.o $(CFLAGS)
+
+bar.o: bar.c m.h
+	$(CC) -c bar.c -o bar.o $(CFLAGS)
+
+# Cleaning rules
+clean:
+	$(RM) *~ $(NAME)
+
+oclean:
+	$(RM) $(OBJ)
+
+fclean: clean oclean
+
+re: fclean all
