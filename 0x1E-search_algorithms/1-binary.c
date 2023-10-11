@@ -1,58 +1,57 @@
 #include "search_algos.h"
 
 /**
- * print_array - prints an array of integers demiliting each element with a
- * commma
- * @array: array to be printed
+ * binary_search - search algorithm
+ * @array: array of integer values
  * @size: size of the array
- * Return: void (does not have a return value)
-*/
-void print_array(int *array, size_t size)
+ * @value: to find matching element
+ *
+ * Description: Recursively split array in halfs until matching elem found
+ * Return: -1 if value not present or array is NULL OR index if found
+ */
+int binary_search(int *array, size_t size, int value)
 {
-	size_t i;
+	int search;
 
-	for (i = 0; i < size; i++)
-		printf("%d%s", array[i], i != size - 1 ? ", " : "\n");
+	search = bs_helper(array, value, -1, size);
+	if (search)
+		return (search);
+	return (-1);
 }
 
 /**
- * binary_search - an implementation of the binary search algorithm
- * @array: array to be searched in
- * @size: size of array to be searched
- * @value: value to search for in array
- * Return: first index of @value on success. -1 on failure
+ * bs_helper - helper function for bsearch
+ * @array: array of integer values
+ * @key: key to match array element
+ * @lower: subarray before mid
+ * @higher: subarray after mid
  *
- * Description: uses binary search to find an element in an array
-*/
-int binary_search(int *array, size_t size, int value)
+ * Description: Recursively split array in halfs until matching elem found
+ * Return: -1 if value not present or array is NULL OR index if found
+ */
+int bs_helper(int *array, int key, int lower, int higher)
 {
-	size_t start, stop, mid;
+	int i;
+	int mid;
 
-	start = 0;
-	stop = size;
-	mid = (start + stop) / 2;
-	if (!array)
+	if (lower + 1 == higher)
 		return (-1);
-	while (1)
+
+	printf("Searching in array: ");
+	for (i = lower + 1; i < higher; i++)
 	{
-		printf("Searching in array: ");
-		print_array(array + start, stop - start);
-		if (array[mid] == value)
-			return (mid);
-		else if (array[mid] > value)
-		{
-			stop = mid;
-			mid = (start + mid) / 2;
-			if (value < array[0])
-				return (-1);
-		}
-		else
-		{
-			start = mid;
-			mid = (mid + stop) / 2;
-			if (value > array[size - 1])
-				return (-1);
-		}
+		printf("%d", array[i]);
+		if (i + 1 < higher)
+			printf(", ");
 	}
-	return (0);
+	printf("\n");
+
+	mid = (lower + higher) / 2;
+	if (array[mid] == key)
+		return (mid);
+
+	if (key < array[mid])
+		return (bs_helper(array, key, lower, mid));
+	else
+		return (bs_helper(array, key, mid, higher));
 }
